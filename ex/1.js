@@ -7,13 +7,14 @@ const todos = [
 const render = todos =>
   todos
     .map(
-      ({ id, content, completed }) => `<li id="${id}">
-<label><input type="checkbox" ${
-        completed === true ? ' checked' : ''
-      }>${content}</label>
-</li>`
+      ({ id, content, completed }) => `
+      <li id="${id}">
+        <label><input type="checkbox" ${
+          completed === true ? ' checked' : ''
+        }>${content}</label>
+      </li>`
     )
-    .join('\n');
+    .join('');
 
 console.log(render(todos));
 /*
