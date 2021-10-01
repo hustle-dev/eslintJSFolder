@@ -4,10 +4,7 @@ let todos = [
   { id: 1, content: 'Javascript', completed: false }
 ];
 
-const addTodo = (todos, newTodo) => {
-  const arr = [newTodo, ...todos];
-  return arr;
-};
+const addTodo = (todos, newTodo) => [newTodo, ...todos];
 
 todos = addTodo(todos, { id: 4, content: 'Test', completed: false });
 console.log(todos);

@@ -5,11 +5,6 @@ const todos = [
 ];
 
 const countCompletedTodos = todos =>
-  todos.reduce((acc, cur) => {
-    if (cur.completed === true) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
+  todos.filter(todo => todo.completed).length;
 
 console.log(countCompletedTodos(todos)); // 1

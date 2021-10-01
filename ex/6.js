@@ -4,14 +4,11 @@ let todos = [
   { id: 1, content: 'Javascript', completed: false }
 ];
 
-const toggleCompletedById = (todos, id) => {
-  todos.map(obj => {
-    if (obj.id === id) {
-      obj.completed = !obj.completed;
-    }
-  });
-  return todos;
-};
+const toggleCompletedById = (todos, id) =>
+  todos.map(todo =>
+    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  );
+
 todos = toggleCompletedById(todos, 2);
 console.log(todos);
 /*

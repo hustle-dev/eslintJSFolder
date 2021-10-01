@@ -4,13 +4,7 @@ const todos = [
   { id: 1, content: 'Javascript', completed: false }
 ];
 
-const getMaxId = todos =>
-  todos.reduce((acc, cur) => {
-    if (acc < cur.id) {
-      acc = cur.id;
-    }
-    return acc;
-  }, 0);
+const getMaxId = todos => Math.max(...todos.map(todo => todo.id), 0);
 
 console.log(getMaxId(todos)); // 3
 console.log(getMaxId([])); // 0
