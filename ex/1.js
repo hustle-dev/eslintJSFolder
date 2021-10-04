@@ -14,8 +14,7 @@ const render = todos =>
         }>${content}</label>
       </li>`
     )
-    .join('');
-
+    .join('\n');
 console.log(render(todos));
 /*
 <li id="3">
