@@ -6,3 +6,5 @@ getLastDateOfMonth(2021, 0); // => 31
 
 // 2021년 2월의 마지막 날은 28일
 getLastDateOfMonth(2021, 1); // => 28
+
+console.log(new Date(2021, 1, 0).toLocaleString());

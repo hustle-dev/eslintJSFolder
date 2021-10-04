@@ -1,12 +1,8 @@
-const toggleCase = s => {
-  const words = s.split('');
+const toggleCase = s =>
   console.log(
-    words
-      .map(word =>
-        word === word.toUpperCase() ? word.toLowerCase() : word.toUpperCase()
-      )
-      .join('')
+    s.replace(/./g, str =>
+      str === str.toUpperCase() ? str.toLowerCase() : str.toUpperCase()
+    )
   );
-};
 
 toggleCase('StuDY'); // => 'sTUdy'
