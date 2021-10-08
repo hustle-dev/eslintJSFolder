@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos v0</title>
+    <style>
+      input[type='checkbox']:checked + span {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" class="todo-input" value="hello" />
+      <button class="todo-button">add</button>
+    </form>
+    <ul class="todo-list"></ul>
+    <script>
+      // todos 상태
+      let todos = [];
+
+      // 변수 선언부분
+      const $form = document.querySelector('form');
+      const $todoInput = document.querySelector('.todo-input');
+      const $todoList = document.querySelector('.todo-list');
+
+      // 화면 출력 함수
+      const render = () => {
+        $todoList.innerHTML = todos
+          .map(
+            ({ id, content, completed }) => `
+        <li id=${id}>
+          <input type="checkbox" ${completed ? 'checked' : ''}>
+          <span>${content}</span>
+          <button class="todo-remove">X</button>
+        </li>
+        `
+          )
+          .join('');
+      };
+
+      const setTodo = newTodo => {
+        todos = newTodo;
+
+        render();
+      };
+
+      // 데이터 가져오는 함수
+      const fetchData = () => {
+        setTodo([
+          {
+            id: 3,
+            content: 'JavaScript',
+            completed: false
+          },
+          {
+            id: 2,
+            content: 'CSS',
+            completed: true
+          },
+          {
+            id: 1,
+            content: 'HTML',
+            completed: false
+          }
+        ]);
+      };
+
+      const generateTodoId = () =>
+        Math.max(...todos.map(todo => todo.id), 0) + 1;
+
+      const addTodo = newcontent => {
+        setTodo([
+          { id: generateTodoId(), content: newcontent, completed: false },
+          ...todos
+        ]);
+      };
+
+      // 체크하면 completed true로 변환
+      const toggleComplete = id => {
+        setTodo(
+          todos.map(todo =>
+            todo.id === +id ? { ...todo, completed: !todo.completed } : todo
+          )
+        );
+      };
+
+      const removeTodo = id => {
+        setTodo(todos.filter(todo => todo.id !== +id));
+      };
+
+      // 이벤트 바인딩 부분
+      // DOM 로드시 데이터 가져오기
+      window.addEventListener('DOMContentLoaded', fetchData);
+
+      // 엔터키 혹은 버튼 눌렀을 시 데이터 추가하기
+      $form.onsubmit = e => {
+        e.preventDefault();
+
+        const content = $todoInput.value.trim();
+
+        if (content) addTodo(content);
+
+        $todoInput.value = '';
+        $todoInput.focus();
+      };
+
+      $todoList.onchange = e => {
+        toggleComplete(e.target.parentNode.id);
+      };
+
+      $todoList.onclick = e => {
+        if (!e.target.classList.contains('todo-remove')) return;
+
+        // console.log(e.target.parentNode.id);
+        removeTodo(e.target.parentNode.id);
+      };
+    </script>
+  </body>
+</html>
