@@ -1,9 +1,8 @@
-const getLastDayOfMonth = (year, month) => {
-  console.log(new Date(year, month + 1, 0).getDay());
-};
+const getFirstDayOfMonth = (year, month) =>
+  console.log(new Date(year, month).getDay());
 
-// 2021년 1월 말일은 일요일
-getLastDayOfMonth(2021, 0); // => 0
+// 2021년 1월 1일은 금요일
+getFirstDayOfMonth(2021, 0); // => 5
 
-// 2021년 12월 말일은 금요일
-getLastDayOfMonth(2021, 11); // => 5
+// 2021년 12월 1일은 수요일
+getFirstDayOfMonth(2021, 11); // => 3

@@ -1,14 +1,10 @@
 const formatDate = date =>
   console.log(
     `${date.getFullYear()}-${
-      Math.floor(Number(date.getMonth() + 1) / 10) === 0
-        ? '0' + Number(date.getMonth() + 1)
-        : Number(date.getMonth() + 1)
-    }-${
-      Math.floor(Number(date.getDate()) / 10) === 0
-        ? '0' + Number(date.getDate())
-        : Number(date.getDate())
-    }`
+      date.getMonth() + 1 < 10
+        ? '0' + (date.getMonth() + 1)
+        : date.getMonth() + 1
+    }-${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}`
   );
 
 formatDate(new Date('2021/07/24')); // => "2021-07-24"

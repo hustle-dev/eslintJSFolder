@@ -1,4 +1,8 @@
-const diffDays = (day1, day2) =>
-  console.log(Math.abs(day1 - day2) / 1000 / 60 / 60 / 24);
+const getLastDayOfMonth = (year, month) =>
+  console.log(new Date(year, month + 1, 0).getDay());
 
-diffDays(new Date('2021/01/01'), new Date('2021/12/31')); // => 364
+// 2021년 1월 말일은 일요일
+getLastDayOfMonth(2021, 0); // => 0
+
+// 2021년 12월 말일은 금요일
+getLastDayOfMonth(2021, 11); // => 5

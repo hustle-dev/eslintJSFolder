@@ -1,4 +1,4 @@
-const isEqualDate = (day1, day2) => console.log(+day1 === +day2);
+const diffDays = (day1, day2) =>
+  console.log(Math.abs(day2 - day1) / (24 * 60 * 60 * 1000));
 
-isEqualDate(new Date('2021/07/24'), new Date('2021/07/24')); // => true
-isEqualDate(new Date('2021/07/24'), new Date('2022/07/2')); // => false
+diffDays(new Date('2021/01/01'), new Date('2021/12/31')); // => 364

@@ -1,10 +1,17 @@
-const getLastDateOfMonth = (year, month) =>
-  console.log(new Date(year, month + 1, 0).getDate());
+const getDay = date => {
+  const dayNames = [
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일'
+  ];
 
-// 2021년 1월의 마지막 날은 31일
-getLastDateOfMonth(2021, 0); // => 31
+  console.log(dayNames[new Date(date).getDay()]);
+};
 
-// 2021년 2월의 마지막 날은 28일
-getLastDateOfMonth(2021, 1); // => 28
-
-console.log(new Date(2021, 1, 0).toLocaleString());
+getDay('2021-07-24'); // => '토요일'
+getDay('2021-07-25'); // => '일요일'
+getDay('2021-07-26'); // => '월요일'
