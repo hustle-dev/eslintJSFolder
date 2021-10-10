@@ -45,6 +45,7 @@
       }
     ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/extensions": "off",
     "max-len": [
       "error",
       {
